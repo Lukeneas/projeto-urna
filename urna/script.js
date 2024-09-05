@@ -10,7 +10,7 @@ let numeros = document.querySelector('.d-1-3');
 
 //etapa vereador
 let etapaAtual = 0;
-//espaço numero sendo preenchido
+//espaço n piscando e armazena e concatena numero total
 let numero = '';
 let votoBranco = false;
 let votos = [];
@@ -55,16 +55,26 @@ function atualizaInterface() {
             return false;
         }
     });
+
+    //filter retorna -1 se nao achar candidato
+    //se achou candidato...
     if(candidato.length > 0) {
+        //candidato = candidato que achou
         candidato = candidato[0];
+        //preenchimento dos dados do candidato específico
         seuVotoPara.style.display = 'block';
         aviso.style.display = 'block';
         descricao.innerHTML = `Nome: ${candidato.nome}<br/>Partido: ${candidato.partido}`;
+
+        //prefeito e vice...
         let fotosHtml = '';
+        //insercao de votos
         for(let i in candidato.fotos) {
             if(candidato.fotos[i].small) {
                 fotosHtml += `<div class="d-1-image small"><img src="images/${candidato.fotos[i].url}" alt="" />${candidato.fotos[i].legenda}</div>`;
-            } else {
+            }
+            //imagens voto nulo ou em branco 
+            else {
                 fotosHtml += `<div class="d-1-image"><img src="images/${candidato.fotos[i].url}" alt="" />${candidato.fotos[i].legenda}</div>`;
             }
         }
