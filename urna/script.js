@@ -8,19 +8,24 @@ let lateral = document.querySelector('.d-1-right');
 //quadrados onde entram numeros
 let numeros = document.querySelector('.d-1-3');
 
+//etapa vereador
 let etapaAtual = 0;
+//espaço numero sendo preenchido
 let numero = '';
 let votoBranco = false;
 let votos = [];
 
 function comecarEtapa() {
+    //PEGAR INFO DA ETAPAATUAL
     let etapa = etapas[etapaAtual];
 
     let numeroHtml = '';
     numero = '';
     votoBranco = false;
 
+    //insercao de n numeros em numerosHtml
     for(let i=0;i<etapa.numeros;i++) {
+        //se for o primeiro quadrado...
         if(i === 0) {
             numeroHtml += '<div class="numero pisca"></div>';
         } else {
@@ -28,15 +33,21 @@ function comecarEtapa() {
         }
     }
 
-    seuVotoPara.style.display = 'none';
+    //PREENCHER e
     cargo.innerHTML = etapa.titulo;
+    //LIMPAR TELA
+    seuVotoPara.style.display = 'none';
     descricao.innerHTML = '';
     aviso.style.display = 'none';
     lateral.innerHTML = '';
+    //div numeros html recebe x numerosJson
     numeros.innerHTML = numeroHtml;
 }
+
+//atualiza posicao de numero e qual candidato digitado
 function atualizaInterface() {
     let etapa = etapas[etapaAtual];
+    //retorna true se houver candidato com numero digitado
     let candidato = etapa.candidatos.filter((item)=>{
         if(item.numero === numero) {
             return true;
@@ -65,16 +76,25 @@ function atualizaInterface() {
     }
 }
 
+//preenchimento dos espaços de numero
 function clicou(n) {
+    //numero piscando
     let elNumero = document.querySelector('.numero.pisca');
+    //se numero está preenchido
     if(elNumero !== null) {
+        //numeroHtml preenchido pelo n clicado
         elNumero.innerHTML = n;
+        //let numero soma ao que já era com n cliclado
         numero = `${numero}${n}`;
 
+        //numero para de piscar
         elNumero.classList.remove('pisca');
+        //se tiver outro espaço igual depois...
         if(elNumero.nextElementSibling !== null) {
+            //comece a piscar
             elNumero.nextElementSibling.classList.add('pisca');
         } else {
+            //se nao houver, atualize(mostra candidato)
             atualizaInterface();
         }
     }
