@@ -1,8 +1,11 @@
 let seuVotoPara = document.querySelector('.d-1-1 span');
 let cargo = document.querySelector('.d-1-2 span');
 let descricao = document.querySelector('.d-1-4');
+//comandos pora votante
 let aviso = document.querySelector('.d-2');
+//imagens
 let lateral = document.querySelector('.d-1-right');
+//quadrados onde entram numeros
 let numeros = document.querySelector('.d-1-3');
 
 let etapaAtual = 0;

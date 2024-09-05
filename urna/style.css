@@ -100,9 +100,11 @@ body {
     line-height: 40px;
     font-size: 25px;
 }
+/* quadrado à ser preenchido */
 .pisca {
     animation-name: pisca;
     animation-duration: 1s;
+    /* nunca para de rodar */
     animation-iteration-count: infinite;
 }
 .d-1-4 {
